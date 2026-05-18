@@ -6,8 +6,11 @@ BENCH="$RADAR_BENCH_REPO/scripts/bench"
 # Run lake commands from the repo root
 cd "$RADAR_REPO"
 
-# Prepare build
-lake exe cache get
+echo "adding symlink...."
+ln -sfn "$(lean --print-prefix)/include" "$BENCH/build/fake-root/include"
+
+# Prepare build (cache is only available for Mathlib-dependent projects)
+lake exe cache get || true
 
 # Run build
 LAKE_OVERRIDE_LEAN=true LEAN=$(realpath "$BENCH/build/fake-root/bin/lean") \
