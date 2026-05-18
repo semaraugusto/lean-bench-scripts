@@ -8,6 +8,7 @@ cd "$RADAR_REPO"
 
 echo "adding symlink...."
 ln -sfn "$(lean --print-prefix)/include" "$BENCH/build/fake-root/include"
+ln -sfn "$(lean --print-prefix)/lib" "$BENCH/build/fake-root/lib"
 
 # Prepare build (cache is only available for Mathlib-dependent projects)
 lake exe cache get || true
