@@ -6,6 +6,7 @@ BENCH="$RADAR_BENCH_REPO/scripts/bench"
 # Run lake commands from the repo root
 cd "$RADAR_REPO"
 
+export CI=true
 # Prepare build (cache is only available for Mathlib-dependent projects)
 lake exe cache get || true
 
